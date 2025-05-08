@@ -26,8 +26,10 @@ SECRET_KEY = 'django-insecure-_ua(^%6yv*y@_^efj1u)8q^796bvb-95n4%$it&10*xi77h9jd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-render-3-29bf.onrender.com','localhost','127.0.0.1']
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 # Application definition
 
@@ -48,12 +50,14 @@ INSTALLED_APPS = [
     'silk',
     'drf_spectacular',
     'django_filters',
+    'whitenoise.runserver_nostatic',
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Add this line for Whitenoise
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
