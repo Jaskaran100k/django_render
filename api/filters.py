@@ -1,0 +1,26 @@
+import django_filters
+from api.models import Product,Order
+from rest_framework import filters
+
+class InStockFilterBackend(filters.BaseFilterBackend): #custom filter backend
+    def filter_queryset(self,request,queryset,view):
+        return queryset.filter(stock__gt=0)
+
+class ProductFilter(django_filters.FilterSet):
+    class Meta:
+        model = Product
+        # fields = ["name","price"]
+
+        fields = {
+            "name": ["iexact", "icontains"],
+            "price": ["exact", "lt", "gt", "range"]
+        }
+
+class OrderFilter(django_filters.FilterSet):
+    create_at = django_filters.DateFilter(field_name='created_at__date') #extract date from created_at field
+    class Meta:
+        model = Order
+        fields = {
+            "status": ["exact"],
+            "created_at": ["exact", "lt", "gt"]
+        }

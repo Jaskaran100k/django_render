@@ -1,0 +1,12 @@
+{
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "html": true,
+    "python": false
+  },
+  "python.defaultInterpreterPath": "D:\\New folder\\django\\1.Django rest framework\\newenv\\Scripts\\python.exe",
+  "python.venvPath": "D:\\New folder\\django\\1.Django rest framework"
+}
